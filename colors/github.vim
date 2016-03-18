@@ -8,7 +8,8 @@
 "       Thanks to Ryan Heath for an easy list of some of the colours:
 "       http://rpheath.com/posts/356-github-theme-for-syntax-gem
 
-set background=light
+let s:cpo_save = &cpo
+set cpo&vim
 
 if version > 580
     hi clear
@@ -17,7 +18,9 @@ if version > 580
     endif
 endif
 
+let b:current_syntax = &cpo
 let colors_name = "github"
+set background=light
 
 " {{{ General colors
 hi Normal   ctermfg=0   ctermbg=255  guifg=#000000   guibg=#F8F8FF
@@ -62,7 +65,7 @@ hi PreProc  ctermfg=247 guifg=#A0A0A0 gui=bold cterm=bold
 hi Comment  ctermfg=246 guifg=#999988
 hi Constant ctermfg=6 guifg=#177F80 gui=none cterm=none
 hi String   ctermfg=161 guifg=#D81745
-hi Function ctermfg=88 guifg=#990000 gui=bold cterm=bold
+hi Function ctermfg=88 guifg=#990000 gui=none cterm=none
 hi Statement    ctermfg=0 guifg=#000000 gui=bold cterm=bold
 hi Type     ctermfg=60 guifg=#445588 gui=bold   cterm=bold
 hi Number   ctermfg=30 guifg=#1C9898
@@ -73,6 +76,13 @@ hi Label        ctermfg=0 guifg=#000000 gui=bold    cterm=bold
 hi StorageClass ctermfg=0 guifg=#000000 gui=bold    cterm=bold
 hi Structure    ctermfg=0 guifg=#000000 gui=bold    cterm=bold
 hi TypeDef      ctermfg=0 guifg=#000000 gui=bold    cterm=bold
+
+" {{{ color_coded extensions
+hi Member ctermfg=17 guifg=#001038 gui=none cterm=none
+hi Variable ctermfg=237 guifg=#3B3B3B gui=none cterm=none
+hi Namespace ctermfg=0 guifg=#666666 gui=italic cterm=italic
+hi EnumConstant ctermfg=0 guifg=#000000 gui=none cterm=none
+" }}}
 
 " {{{ Links
 hi! link FoldColumn Folded
@@ -114,3 +124,5 @@ if has("spell")
 endif
 " }}}
 
+let &cpo = s:cpo_save
+unlet s:cpo_save
